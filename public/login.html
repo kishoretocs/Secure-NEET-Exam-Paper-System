@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Create Question</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="requestquestion.html">Request Question</a></li>
+      <li><a href="complete.html">Complete</a></li>
+      <li><a href="checkresult.html">Check Result</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h1>User Authentication</h1>
+
+    <!-- Buttons to switch between forms -->
+    <div id="form-toggle">
+      <button onclick="showForm('signup')">Signup</button>
+      <button onclick="showForm('login')">Login</button>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup-form" class="form-container">
+      <h2>Signup</h2>
+      <form>
+        <input type="text" id="signup-name" placeholder="Enter your name" required>
+        <input type="password" id="signup-password" placeholder="Enter your password" required>
+        <button type="button" onclick="signup()">Signup</button>
+      </form>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" class="form-container" style="display: none;">
+      <h2>Login</h2>
+      <form>
+        <input type="text" id="login-name" placeholder="Enter your name" required>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+        <button type="button" onclick="login()">Login</button>
+      </form>
+    </div>
+
+    <p id="status"></p>
+  </div>
+
+  <script src="scripts/login.js"></script>
+</body>
+</html>

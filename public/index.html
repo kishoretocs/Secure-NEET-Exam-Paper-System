@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Question</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Create Question</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="requestquestion.html">Request Question</a></li>
+        <li><a href="complete.html">Complete</a></li>
+        <li><a href="checkresult.html">Check Result</a></li>
+      </ul>
+    </nav>
+  <div class="container">
+    <h1>Create a New Question</h1>
+    <form id="question-form">
+      <div class="form-group">
+        <label for="id">Question ID</label>
+        <input type="number" id="id" name="id" placeholder="Enter a unique question ID" required>
+      </div>
+      <div class="form-group">
+        <label for="question">Question Text</label>
+        <textarea id="question" name="question" placeholder="Enter your question" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="options">Options (comma-separated)</label>
+        <input type="text" id="options" name="options" placeholder="Option1, Option2, Option3, ..." required>
+      </div>
+      <div class="form-group">
+        <label for="createdBy">Created By</label>
+        <input type="text" id="createdBy" name="createdBy" placeholder="Enter your username" required>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <div id="response" class="response"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

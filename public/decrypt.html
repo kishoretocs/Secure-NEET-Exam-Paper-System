@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decrypt Question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+    input, textarea, button {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e7f5ff;
+      border-left: 4px solid #007bff;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Decrypt Question</h2>
+    <form id="decryptForm">
+      <label for="id">Question ID:</label>
+      <input type="text" id="id" name="id" placeholder="Enter the question ID" required>
+
+      <label for="shares">Shares:</label>
+      <textarea id="shares" name="shares" placeholder="Enter the shares (comma-separated)" required></textarea>
+
+      <button type="submit">Decrypt</button>
+    </form>
+    <div id="result" class="result" style="display: none;">
+      <p><strong>Decrypted Question:</strong> <span id="decryptedQuestion"></span></p>
+      <p><strong>Decrypted Options:</strong></p>
+      <ul id="decryptedOptions"></ul>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('decryptForm');
+    const resultDiv = document.getElementById('result');
+    const decryptedQuestion = document.getElementById('decryptedQuestion');
+    const decryptedOptions = document.getElementById('decryptedOptions');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const id = document.getElementById('id').value;
+      const shares = document.getElementById('shares').value.split(',').map(s => s.trim());
+
+      try {
+        const response = await fetch(`http://localhost:3000/questions/decrypt/${id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ shares }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          alert(errorData.error || 'Failed to decrypt the question.');
+          return;
+        }
+
+        const data = await response.json();
+        decryptedQuestion.textContent = data.question;
+        decryptedOptions.innerHTML = '';
+        data.options.forEach(option => {
+          const li = document.createElement('li');
+          li.textContent = option;
+          decryptedOptions.appendChild(li);
+        });
+
+        resultDiv.style.display = 'block';
+      } catch (error) {
+        alert('An error occurred while decrypting. Please try again.');
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

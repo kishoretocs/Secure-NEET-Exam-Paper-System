@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decryption Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Create Question</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="requestquestion.html">Request Question</a></li>
+      <li><a href="complete.html">Complete</a></li>
+      <li><a href="checkresult.html">Check Result</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h1>Create Decryption Request</h1>
+    <form id="decryption-request-form">
+      <label for="questionid">Question ID:</label>
+      <input type="text" id="questionid" name="questionid" required>
+
+      <label for="requesterName">Requester Name:</label>
+      <input type="text" id="requesterName" name="requesterName" required>
+
+      <button type="submit">Submit Request</button>
+    </form>
+    <div id="response"></div>
+  </div>
+  <script src="scripts/request.js"></script>
+</body>
+</html>

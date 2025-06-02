@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Request</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Create Question</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="requestquestion.html">Request Question</a></li>
+      <li><a href="complete.html">Complete</a></li>
+      <li><a href="checkresult.html">Check Result</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h1>Complete Request</h1>
+    <form id="completeRequestForm">
+      <label for="questionid">Question ID:</label>
+      <input type="text" id="questionid" name="questionid" placeholder="Enter Question ID" required>
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder="Enter Username" required>
+
+      <button type="submit">Submit Share</button>
+    </form>
+    <div id="responseMessage"></div>
+  </div>
+
+  <script src="scripts/complete.js"></script>
+</body>
+</html>
