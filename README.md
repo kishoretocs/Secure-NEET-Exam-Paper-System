@@ -64,8 +64,8 @@ Secure-NEET-Exam-Paper-System/
 3. **_Set environment variables (if needed)_**
    Create a .env file:
 
-MONGO_URI=your_mongo_connection_string
-PORT=5000
+  MONGO_URI=your_mongo_connection_string
+  PORT=5000
 
 4 **_Run the server_**
 
